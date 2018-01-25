@@ -120,8 +120,8 @@ public:
 				ss << "progress: " << ofToString(pct * 100, 0) << "% - ";
 			}
 			
-			ss << ofToString(ofGetFrameRate(), 1) << "fps";
-			ofSetWindowTitle(ss.str());
+			//ss << ofToString(ofGetFrameRate(), 1) << "fps";
+			//ofSetWindowTitle(ss.str());
 		}
 	}
 
@@ -167,7 +167,7 @@ public:
 	void setOutputDir(const string& path)
 	{
 		export_path = path;
-		this->pattern = path + "/" + path + "_%05i.tif";
+		this->pattern = path + "/out_%05i.tif";
 	}
 
 	const string& getFilePattern() const { return pattern; }
@@ -201,6 +201,8 @@ public:
 	}
 
 	ofFbo& getFbo() { return fbo; }
+
+	Poco::TaskManager & getTaskManager(){return taskmanager;}
 
 protected:
 	bool do_export;
